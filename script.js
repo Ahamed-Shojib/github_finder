@@ -13,15 +13,19 @@ function fatchAPI(){
         .then(data =>{
             if(data.message === 'Not Found'){
                 //Error Message
-                console.log(data.message);
+                ui.showAlert('Profile Not found!','alert alert-danger');
+                input_value.value = '';
+                ui.clearProfile();
             }else{
                 //Show Profile
                 ui.showProfile(data);
+                input_value.value = '';
             }
         })
         
     }else{
         //Clear Profile
-        
+        input_value.value = '';
+        ui.clearProfile();
     }
 }

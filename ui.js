@@ -2,7 +2,9 @@ class UI{
     constructor(){
         this.profile = document.getElementById('git_profile');
     }
+    
     showProfile(user){
+        this.clearAlert();
         this.profile.innerHTML = 
         `<div class="card card-body">
             <div class='row'>
@@ -24,5 +26,23 @@ class UI{
                     </div>
             </div>
         </div>`;
+    }
+    clearProfile(){
+        this.profile.innerHTML = '';
+    }
+    showAlert(message,classname){
+        this.clearAlert();
+        let div = document.createElement('div');
+        div.className = classname;
+        div.appendChild(document.createTextNode(message));
+        let container = document.querySelector('.container_class');
+        let search_box = document.querySelector('.search_box');
+        container.insertBefore(div,search_box);
+    }
+    clearAlert(){
+        let current = document.querySelector('.alert');
+        if(current){
+            current.remove();
+        }
     }
 }
